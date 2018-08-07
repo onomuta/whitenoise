@@ -1,0 +1,30 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>white noise</title>
+  <style>
+    * {padding: 0; margin: 0; overflow: hidden;}
+  </style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.min.js"></script>
+  <script>
+    var noise;
+    var fft;
+    var filter, filterFreq, filterWidth;
+    function setup() {
+      createCanvas(windowWidth, windowHeight);
+      fill(255);
+      noise = new p5.Noise();
+      noise.start();
+      amplitude = new p5.Amplitude();
+      noStroke();
+    }
+    function draw() {
+      background(230);
+      var level = amplitude.getLevel();
+      var size = map(level, 0, 1, 0, width);
+      ellipse(width/2, height/2, size, size);
+    }
+  </script>
+</head>
+</html>
